@@ -14,5 +14,5 @@ jobs:
         #run: cp config_sample.env config.env
       - name: copy config and delete the first line
         run: tail -n +3 config_sample.env > config.env
-      - run: echo ${{ secrets }}
+      - run: echo ${{ secrets.BOT_TOKEN }}
       #- run: cat config.env
