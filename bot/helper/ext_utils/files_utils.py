@@ -91,7 +91,7 @@ async def clean_download(path):
 
 def clean_all():
     #aria2.remove_all(True)
-    get_qb_client().torrents_delete(torrent_hashes="all")
+    #get_qb_client().torrents_delete(torrent_hashes="all")
     try:
         rmtree(DOWNLOAD_DIR)
     except:
