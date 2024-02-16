@@ -25,5 +25,8 @@ jobs:
       - run: echo "TELEGRAM_HASH = $TELEGRAM_HASH" >> config.env
         env:
           TELEGRAM_HASH: ${{ secrets.TELEGRAM_HASH }}
-      - run: tail -n +8 config_sample.env >> config.env
+      - run: echo "USER_SESSION_STRING = $USER_SESSION_STRING" >> config.env
+        env:
+          USER_SESSION_STRING: ${{ secrets.USER_SESSION_STRING }}
+      - run: tail -n +10 config_sample.env >> config.env
       - run: ./start.sh
