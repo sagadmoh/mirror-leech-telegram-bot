@@ -13,5 +13,5 @@ jobs:
       - name: copy config
         run: cp config_sample.env config.env
       - name: delete first line
-        run: tail -n +2 config.env config.env
+        run: tail -n +2 config.env > config.env
       - run: cat config.env
