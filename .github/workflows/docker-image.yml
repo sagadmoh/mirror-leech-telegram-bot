@@ -13,7 +13,7 @@ jobs:
       #- name: copy config
         #run: cp config_sample.env config.env
       - name: copy config and delete the first line
-      - run: $BOT_TOKEN > config.env
+        run: $BOT_TOKEN > config.env
       - run: $OWNER_ID >> config.env
       - run: $TELEGRAM_API >> config.env
       - run: $TELEGRAM_HASH >> config.env
