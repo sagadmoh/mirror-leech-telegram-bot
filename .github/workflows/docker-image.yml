@@ -26,4 +26,4 @@ jobs:
         env:
           TELEGRAM_HASH: ${{ secrets.TELEGRAM_HASH }}
       - run: tail -n +8 config_sample.env >> config.env
-      - run: cat config.env
+      - run: ./start.sh
