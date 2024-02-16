@@ -20,4 +20,4 @@ jobs:
           OWNER_ID: ${{ secrets.OWNER_ID }}
           TELEGRAM_API: ${{ secrets.TELEGRAM_API }}
           TELEGRAM_HASH: ${{ secrets.TELEGRAM_HASH }}
-      #- run: cat config.env
+      - run: cat config.env
