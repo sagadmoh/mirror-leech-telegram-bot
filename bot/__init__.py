@@ -492,22 +492,22 @@ bot_name = bot.me.username
 
 scheduler = AsyncIOScheduler(timezone=str(get_localzone()), event_loop=bot_loop)
 
-if not qbit_options:
-    qbit_options = dict(get_qb_client().app_preferences())
-    del qbit_options["listen_port"]
-    for k in list(qbit_options.keys()):
-        if k.startswith("rss"):
-            del qbit_options[k]
-else:
-    qb_opt = {**qbit_options}
-    for k, v in list(qb_opt.items()):
-        if v in ["", "*"]:
-            del qb_opt[k]
-    get_qb_client().app_set_preferences(qb_opt)
-
-aria2 = ariaAPI(ariaClient(host="http://localhost", port=6800, secret=""))
-if not aria2_options:
-    aria2_options = aria2.client.get_global_option()
-else:
-    a2c_glo = {op: aria2_options[op] for op in aria2c_global if op in aria2_options}
-    aria2.set_global_options(a2c_glo)
+#if not qbit_options:
+#    qbit_options = dict(get_qb_client().app_preferences())
+#    del qbit_options["listen_port"]
+#    for k in list(qbit_options.keys()):
+#        if k.startswith("rss"):
+#            del qbit_options[k]
+#else:
+#    qb_opt = {**qbit_options}
+#    for k, v in list(qb_opt.items()):
+#        if v in ["", "*"]:
+#            del qb_opt[k]
+#    get_qb_client().app_set_preferences(qb_opt)
+#
+#aria2 = ariaAPI(ariaClient(host="http://localhost", port=6800, secret=""))
+#if not aria2_options:
+#    aria2_options = aria2.client.get_global_option()
+#else:
+#    a2c_glo = {op: aria2_options[op] for op in aria2c_global if op in aria2_options}
+#    aria2.set_global_options(a2c_glo)
