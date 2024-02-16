@@ -24,7 +24,7 @@ from bot import (
     DRIVES_IDS,
     DRIVES_NAMES,
     INDEX_URLS,
-    aria2,
+    #aria2,
     GLOBAL_EXTENSION_FILTER,
     Intervals,
     aria2_options,
@@ -205,7 +205,8 @@ async def edit_variable(_, message, pre_message, key):
                 )
     elif key == "TORRENT_TIMEOUT":
         value = int(value)
-        downloads = await sync_to_async(aria2.get_downloads)
+        #downloads = await sync_to_async(aria2.get_downloads)
+         downloads = []
         for download in downloads:
             if not download.is_complete:
                 try:
@@ -277,9 +278,11 @@ async def edit_aria(_, message, pre_message, key):
     elif value.lower() == "false":
         value = "false"
     if key in aria2c_global:
-        await sync_to_async(aria2.set_global_options, {key: value})
+        pass
+        #await sync_to_async(aria2.set_global_options, {key: value})
     else:
-        downloads = await sync_to_async(aria2.get_downloads)
+        #downloads = await sync_to_async(aria2.get_downloads)
+        downloads = []
         for download in downloads:
             if not download.is_complete:
                 try:
@@ -490,7 +493,8 @@ async def edit_bot_settings(client, query):
             GLOBAL_EXTENSION_FILTER.clear()
             GLOBAL_EXTENSION_FILTER.extend(["aria2", "!qB"])
         elif data[2] == "TORRENT_TIMEOUT":
-            downloads = await sync_to_async(aria2.get_downloads)
+            #downloads = await sync_to_async(aria2.get_downloads)
+            downloads = []
             for download in downloads:
                 if not download.is_complete:
                     try:
@@ -543,15 +547,16 @@ async def edit_bot_settings(client, query):
         ]:
             await rclone_serve_booter()
     elif data[1] == "resetaria":
-        aria2_defaults = await sync_to_async(aria2.client.get_global_option)
-        if aria2_defaults[data[2]] == aria2_options[data[2]]:
-            await query.answer("Value already same as you added in aria.sh!")
-            return
+        #aria2_defaults = await sync_to_async(aria2.client.get_global_option)
+        #if aria2_defaults[data[2]] == aria2_options[data[2]]:
+        #    await query.answer("Value already same as you added in aria.sh!")
+        #    return
         await query.answer()
         value = aria2_defaults[data[2]]
         aria2_options[data[2]] = value
         await update_buttons(message, "aria")
-        downloads = await sync_to_async(aria2.get_downloads)
+        #downloads = await sync_to_async(aria2.get_downloads)
+        downloads = []
         for download in downloads:
             if not download.is_complete:
                 try:
@@ -566,7 +571,8 @@ async def edit_bot_settings(client, query):
         await query.answer()
         aria2_options[data[2]] = ""
         await update_buttons(message, "aria")
-        downloads = await sync_to_async(aria2.get_downloads)
+        #downloads = await sync_to_async(aria2.get_downloads)
+        downloads = []
         for download in downloads:
             if not download.is_complete:
                 try:
@@ -828,7 +834,8 @@ async def load_config():
     USER_SESSION_STRING = environ.get("USER_SESSION_STRING", "")
 
     TORRENT_TIMEOUT = environ.get("TORRENT_TIMEOUT", "")
-    downloads = aria2.get_downloads()
+    #downloads = aria2.get_downloads()
+    downloads = []
     if len(TORRENT_TIMEOUT) == 0:
         for download in downloads:
             if not download.is_complete:
