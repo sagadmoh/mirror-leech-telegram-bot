@@ -6,8 +6,8 @@ from re import split as re_split, I, search as re_search, escape
 from shutil import rmtree
 from subprocess import run as srun
 from sys import exit as sexit
-
-from bot import aria2, LOGGER, DOWNLOAD_DIR, get_qb_client
+#aria2
+from bot import LOGGER, DOWNLOAD_DIR, get_qb_client
 from bot.helper.ext_utils.bot_utils import sync_to_async, cmd_exec
 from .exceptions import NotSupportedExtractionArchive
 
@@ -90,7 +90,7 @@ async def clean_download(path):
 
 
 def clean_all():
-    aria2.remove_all(True)
+    #aria2.remove_all(True)
     get_qb_client().torrents_delete(torrent_hashes="all")
     try:
         rmtree(DOWNLOAD_DIR)
