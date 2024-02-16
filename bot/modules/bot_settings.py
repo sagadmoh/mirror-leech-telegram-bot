@@ -281,6 +281,7 @@ async def edit_aria(_, message, pre_message, key):
         pass
         #await sync_to_async(aria2.set_global_options, {key: value})
     else:
+        pass
         #downloads = await sync_to_async(aria2.get_downloads)
         #downloads = []
         #for download in downloads:
@@ -493,6 +494,7 @@ async def edit_bot_settings(client, query):
             GLOBAL_EXTENSION_FILTER.clear()
             GLOBAL_EXTENSION_FILTER.extend(["aria2", "!qB"])
         elif data[2] == "TORRENT_TIMEOUT":
+            pass
             #downloads = await sync_to_async(aria2.get_downloads)
             #downloads = []
             #for download in downloads:
