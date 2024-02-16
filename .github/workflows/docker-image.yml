@@ -1,0 +1,17 @@
+name: "ngrok SSH tunnel (Ubuntu 22.04)"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ngrok_ssh_tunnel:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: install requirements-cli
+        run: pip3 install -r requirements-cli.txt
+      - name: copy config
+        run: cp config_sample.env config.env
+      - name: delete first line
+        run: tail -n +2 config.env config.env
+      - run: cat config.env
