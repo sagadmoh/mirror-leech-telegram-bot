@@ -4,7 +4,7 @@ from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 
 from bot import (
     bot,
-    aria2,
+    #aria2,
     task_dict,
     task_dict_lock,
     OWNER_ID,
@@ -130,7 +130,8 @@ async def get_confirm(_, query):
                 if not task.queued:
                     await sync_to_async(task.client.torrents_resume, torrent_hashes=id_)
             else:
-                res = await sync_to_async(aria2.client.get_files, id_)
+                #res = await sync_to_async(aria2.client.get_files, id_)
+                res = []
                 for f in res:
                     if f["selected"] == "false" and await aiopath.exists(f["path"]):
                         try:
