@@ -1,7 +1,7 @@
 from aiofiles.os import remove, path as aiopath
 
 from bot import (
-    aria2,
+    #aria2,
     task_dict_lock,
     task_dict,
     LOGGER,
@@ -79,7 +79,7 @@ async def add_aria2c_download(listener, dpath, header, ratio, seed_time):
         await sendStatusMessage(listener.message)
     elif listener.select and download.is_torrent and not download.is_metadata:
         if not add_to_queue:
-            await sync_to_async(aria2.client.force_pause, gid)
+            #await sync_to_async(aria2.client.force_pause, gid)
         SBUTTONS = bt_selection_buttons(gid)
         msg = "Your download paused. Choose files then press Done Selecting button to start downloading."
         await sendMessage(listener.message, msg, SBUTTONS)
@@ -94,7 +94,7 @@ async def add_aria2c_download(listener, dpath, header, ratio, seed_time):
             task.queued = False
             new_gid = task.gid()
 
-        await sync_to_async(aria2.client.unpause, new_gid)
+        #await sync_to_async(aria2.client.unpause, new_gid)
         LOGGER.info(f"Start Queued Download from Aria2c: {name}. Gid: {gid}")
 
         async with queue_dict_lock:
