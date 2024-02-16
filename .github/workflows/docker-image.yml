@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: install requirements-cli
-        run: pip3 install -r requirements-cli.txt
+        run: pip3 install -r requirements-cli.txt; pip3 install -r requirements.txt
       #- name: copy config
         #run: cp config_sample.env config.env
       - name: copy config and delete the first line
