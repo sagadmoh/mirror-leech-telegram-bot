@@ -6,7 +6,7 @@ from requests import utils as rutils
 
 from bot import (
     Intervals,
-    aria2,
+    #aria2,
     DOWNLOAD_DIR,
     task_dict,
     task_dict_lock,
@@ -56,7 +56,7 @@ class TaskListener(TaskConfig):
                 for intvl in list(st.values()):
                     intvl.cancel()
             Intervals["status"].clear()
-            await gather(sync_to_async(aria2.purge), delete_status())
+            #await gather(sync_to_async(aria2.purge), delete_status())
         except:
             pass
 
