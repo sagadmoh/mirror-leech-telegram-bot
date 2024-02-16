@@ -206,17 +206,17 @@ async def edit_variable(_, message, pre_message, key):
     elif key == "TORRENT_TIMEOUT":
         value = int(value)
         #downloads = await sync_to_async(aria2.get_downloads)
-         downloads = []
-        for download in downloads:
-            if not download.is_complete:
-                try:
-                    await sync_to_async(
-                        aria2.client.change_option,
-                        download.gid,
-                        {"bt-stop-timeout": f"{value}"},
-                    )
-                except Exception as e:
-                    LOGGER.error(e)
+        # downloads = []
+        #for download in downloads:
+        #    if not download.is_complete:
+        #        try:
+        #            await sync_to_async(
+        #                aria2.client.change_option,
+        #                download.gid,
+        #                {"bt-stop-timeout": f"{value}"},
+        #            )
+        #        except Exception as e:
+        #            LOGGER.error(e)
         aria2_options["bt-stop-timeout"] = f"{value}"
     elif key == "LEECH_SPLIT_SIZE":
         value = min(int(value), MAX_SPLIT_SIZE)
@@ -282,15 +282,15 @@ async def edit_aria(_, message, pre_message, key):
         #await sync_to_async(aria2.set_global_options, {key: value})
     else:
         #downloads = await sync_to_async(aria2.get_downloads)
-        downloads = []
-        for download in downloads:
-            if not download.is_complete:
-                try:
-                    await sync_to_async(
-                        aria2.client.change_option, download.gid, {key: value}
-                    )
-                except Exception as e:
-                    LOGGER.error(e)
+        #downloads = []
+        #for download in downloads:
+        #    if not download.is_complete:
+        #        try:
+        #            await sync_to_async(
+        #                aria2.client.change_option, download.gid, {key: value}
+        #            )
+        #        except Exception as e:
+        #            LOGGER.error(e)
     aria2_options[key] = value
     await update_buttons(pre_message, "aria")
     await deleteMessage(message)
@@ -494,17 +494,17 @@ async def edit_bot_settings(client, query):
             GLOBAL_EXTENSION_FILTER.extend(["aria2", "!qB"])
         elif data[2] == "TORRENT_TIMEOUT":
             #downloads = await sync_to_async(aria2.get_downloads)
-            downloads = []
-            for download in downloads:
-                if not download.is_complete:
-                    try:
-                        await sync_to_async(
-                            aria2.client.change_option,
-                            download.gid,
-                            {"bt-stop-timeout": "0"},
-                        )
-                    except Exception as e:
-                        LOGGER.error(e)
+            #downloads = []
+            #for download in downloads:
+            #    if not download.is_complete:
+            #        try:
+            #            await sync_to_async(
+            #                aria2.client.change_option,
+            #                download.gid,
+            #                {"bt-stop-timeout": "0"},
+            #            )
+            #        except Exception as e:
+            #            LOGGER.error(e)
             aria2_options["bt-stop-timeout"] = "0"
             if DATABASE_URL:
                 await DbManager().update_aria2("bt-stop-timeout", "0")
@@ -556,15 +556,15 @@ async def edit_bot_settings(client, query):
         aria2_options[data[2]] = value
         await update_buttons(message, "aria")
         #downloads = await sync_to_async(aria2.get_downloads)
-        downloads = []
-        for download in downloads:
-            if not download.is_complete:
-                try:
-                    await sync_to_async(
-                        aria2.client.change_option, download.gid, {data[2]: value}
-                    )
-                except Exception as e:
-                    LOGGER.error(e)
+        #downloads = []
+        #for download in downloads:
+        #    if not download.is_complete:
+        #        try:
+        #            await sync_to_async(
+        #                aria2.client.change_option, download.gid, {data[2]: value}
+        #            )
+        #        except Exception as e:
+        #            LOGGER.error(e)
         if DATABASE_URL:
             await DbManager().update_aria2(data[2], value)
     elif data[1] == "emptyaria":
@@ -572,15 +572,15 @@ async def edit_bot_settings(client, query):
         aria2_options[data[2]] = ""
         await update_buttons(message, "aria")
         #downloads = await sync_to_async(aria2.get_downloads)
-        downloads = []
-        for download in downloads:
-            if not download.is_complete:
-                try:
-                    await sync_to_async(
-                        aria2.client.change_option, download.gid, {data[2]: ""}
-                    )
-                except Exception as e:
-                    LOGGER.error(e)
+        #downloads = []
+        #for download in downloads:
+        #    if not download.is_complete:
+        #        try:
+        #            await sync_to_async(
+        #                aria2.client.change_option, download.gid, {data[2]: ""}
+        #            )
+        #        except Exception as e:
+        #            LOGGER.error(e)
         if DATABASE_URL:
             await DbManager().update_aria2(data[2], "")
     elif data[1] == "emptyqbit":
@@ -835,18 +835,18 @@ async def load_config():
 
     TORRENT_TIMEOUT = environ.get("TORRENT_TIMEOUT", "")
     #downloads = aria2.get_downloads()
-    downloads = []
+    #downloads = []
     if len(TORRENT_TIMEOUT) == 0:
-        for download in downloads:
-            if not download.is_complete:
-                try:
-                    await sync_to_async(
-                        aria2.client.change_option,
-                        download.gid,
-                        {"bt-stop-timeout": "0"},
-                    )
-                except Exception as e:
-                    LOGGER.error(e)
+        #for download in downloads:
+        #    if not download.is_complete:
+        #        try:
+        #            await sync_to_async(
+        #                aria2.client.change_option,
+        #                download.gid,
+        #                {"bt-stop-timeout": "0"},
+        #            )
+        #        except Exception as e:
+        #            LOGGER.error(e)
         aria2_options["bt-stop-timeout"] = "0"
         if DATABASE_URL:
             await DbManager().update_aria2("bt-stop-timeout", "0")
