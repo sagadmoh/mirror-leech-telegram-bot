@@ -140,8 +140,8 @@ else:
 if not ospath.exists(".netrc"):
     with open(".netrc", "w"):
         pass
-run(#/root/.netrc
-    "chmod 600 .netrc && chmod +x aria-nox.sh && ./aria-nox.sh",
+run(#/root/.netrc # && ./aria-nox.sh
+    "chmod 600 .netrc && chmod +x aria-nox.sh",
     shell=True,
 )
 
