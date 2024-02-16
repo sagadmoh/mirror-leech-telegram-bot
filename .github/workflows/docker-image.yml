@@ -13,16 +13,16 @@ jobs:
       #- name: copy config
         #run: cp config_sample.env config.env
       - name: copy config and delete the first line
-        run: echo $BOT_TOKEN > config.env
+        run: echo "BOT_TOKEN = $BOT_TOKEN" > config.env
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      - run: echo $OWNER_ID >> config.env
+      - run: echo "OWNER_ID = $OWNER_ID" >> config.env
         env:
           OWNER_ID: ${{ secrets.OWNER_ID }}
-      - run: echo $TELEGRAM_API >> config.env
+      - run: echo "TELEGRAM_API = $TELEGRAM_API" >> config.env
         env:
           TELEGRAM_API: ${{ secrets.TELEGRAM_API }}
-      - run: echo $TELEGRAM_HASH >> config.env
+      - run: echo "TELEGRAM_HASH = $TELEGRAM_HASH" >> config.env
         env:
           TELEGRAM_HASH: ${{ secrets.TELEGRAM_HASH }}
       - run: tail -n +8 config_sample.env >> config.env
