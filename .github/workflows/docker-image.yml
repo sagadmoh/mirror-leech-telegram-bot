@@ -14,10 +14,10 @@ jobs:
         #run: cp config_sample.env config.env
       - name: copy config and delete the first line
         run: tail -n +3 config_sample.env > config.env
+      - run: cat config.env
       - run: ./start.sh
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           OWNER_ID: ${{ secrets.OWNER_ID }}
           TELEGRAM_API: ${{ secrets.TELEGRAM_API }}
           TELEGRAM_HASH: ${{ secrets.TELEGRAM_HASH }}
-      - run: cat config.env
