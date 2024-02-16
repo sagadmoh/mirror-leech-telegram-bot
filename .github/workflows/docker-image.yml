@@ -16,7 +16,7 @@ jobs:
         run: $BOT_TOKEN > config.env
       - run: $OWNER_ID >> config.env
       - run: $TELEGRAM_API >> config.env
-      - run: $TELEGRAM_HASH >> config.env
+      #- run: $TELEGRAM_HASH >> config.env
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           OWNER_ID: ${{ secrets.OWNER_ID }}
