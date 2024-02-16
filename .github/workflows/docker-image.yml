@@ -1,4 +1,4 @@
-name: "ngrok SSH tunnel (Ubuntu 22.04)"
+name: "mirror workflow"
 
 on:
   workflow_dispatch:
@@ -14,4 +14,5 @@ jobs:
         #run: cp config_sample.env config.env
       - name: copy config and delete the first line
         run: tail -n +3 config_sample.env > config.env
-      - run: cat config.env
+      - run: echo ${{ secrets }}
+      #- run: cat config.env
