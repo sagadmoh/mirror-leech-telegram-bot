@@ -1,8 +1,8 @@
 from aiofiles.os import remove, path as aiopath
 from asyncio import sleep
 from time import time
-
-from bot import aria2, task_dict_lock, task_dict, LOGGER, config_dict, Intervals
+#import aria2,
+from bot  task_dict_lock, task_dict, LOGGER, config_dict, Intervals
 from bot.helper.ext_utils.bot_utils import (
     new_thread,
     bt_selection_buttons,
@@ -176,13 +176,13 @@ async def _onDownloadError(api, gid):
         await task.listener.onDownloadError(error)
 
 
-def start_aria2_listener():
-    aria2.listen_to_notifications(
-        threaded=False,
-        on_download_start=_onDownloadStarted,
-        on_download_error=_onDownloadError,
-        on_download_stop=_onDownloadStopped,
-        on_download_complete=_onDownloadComplete,
-        on_bt_download_complete=_onBtDownloadComplete,
-        timeout=60,
-    )
+#def start_aria2_listener():
+#    aria2.listen_to_notifications(
+#        threaded=False,
+#        on_download_start=_onDownloadStarted,
+#        on_download_error=_onDownloadError,
+#        on_download_stop=_onDownloadStopped,
+#        on_download_complete=_onDownloadComplete,
+#        on_bt_download_complete=_onBtDownloadComplete,
+#        timeout=60,
+#    )
